@@ -10,9 +10,9 @@ Providing feedback to users when they interact with a website
 is an essential part of every modern web application. This is usually done
 with some bunch of javascript, coupled with ajax.
 
-This blog post explains how we can write an integration test with Capybara
-to test the DOM state between a request send asynchronously to the
-rails server, and the response.
+This blog post explains how one can write an integration test with Capybara
+to test the DOM state between a request sent asynchronously to the
+rails server and the response.
 
 <!-- more -->
 
@@ -37,11 +37,11 @@ feature "Post a note", js: true do
 end
 ```
 
-We're initialy testing the non-presence of the load image, this test can be separate in two
+We're initialy testing that the load image is not here yet, this test can be split in two
 parts to keep only one assertion by test, but this is not the point here.
 
 In the Rails world, the `jquery-ujs` gem is the main way to perform
-asynchronous request to the server, thanks to the `data-remote` HTML5 custom data
+asynchronous requests to the server, thanks to the `data-remote` HTML5 custom data
 attribute.
 
 ``` haml The dom
@@ -64,9 +64,9 @@ $('form#new_comment').on('ajax:complete', function(xhr, status) {
 });
 ```
 
-However, **our test does not pass**, the request was already performed
-when the test evaluated the dom : our spin is not visible at this
-moment (and if it's not the case for you, this bevahiour can be random).
+However, **the test does not pass**, request has already been performed
+when the test evaluates the dom : the spin is not visible at this
+moment. The worst part is that that failure occurs on a random basis.
 
 
 `alias_method` to the rescue!
@@ -98,10 +98,10 @@ RSpec.configure do |config|
 end
 ```
 
-In order to respect test isolation, the second method restores the
+In order to keep test isolation OK, the second method restores the
 behaviour of the original one.
 
-The final test uses methods above in rspec hooks:
+The final test uses the methods above in rspec hooks:
 
 ``` ruby The final test 
 feature "Post a note", js: true do
@@ -131,8 +131,7 @@ feature "Post a note", js: true do
   end
 end
 ```
-
-The sleep isn't a problem here thanks to the test implementation: in fact, no
-need to wait for the server response, the test succeeded once the request is sending.
+The sleep here will not slow you down since the test succeeds on its own before the sleep
+has a chance to waste your time.
 
 Happy testing!
