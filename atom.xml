@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Skelz0r]]></title>
+  <link href="http://tech.skelz0r.fr/atom.xml" rel="self"/>
+  <link href="http://tech.skelz0r.fr/"/>
+  <updated>2014-11-29T15:18:53+01:00</updated>
+  <id>http://tech.skelz0r.fr/</id>
+  <author>
+    <name><![CDATA[Loïc 'Skelz0r' Delmaire]]></name>
+    <email><![CDATA[skelz0r@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
