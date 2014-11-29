@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://tech.skelz0r.fr/sitemap.xml 
+Sitemap: http://skelz0r.github.io/sitemap.xml 
